@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+
+    <style type="text/css">
+        body 
+        {
+            border: 1px solid #fff; 
+            margin: 0 68px;
+            padding: 0;
+            height: 30mm;
+		    font-family: Helvetica, arial, sans-serif;
+		    font-size: 14px;
+            /*
+            In the actual program this height is calculated dynamically in PHP as
+            ($headerMargin - $topMargin) * 1.33
+            */
+        }
+
+        #master-div
+        {
+			border-bottom: 1px solid #000;
+            overflow: hidden;
+            height: 65%;
+        }
+		span
+		{
+			position:relative;
+			top:10mm;
+			font-size:12px;
+			line-height: 15px;
+		}
+
+    </style>
+	<script>
+	var pdfInfo = {};
+	  var x = document.location.search.substring(1).split('&');
+	  for (var i in x) { var z = x[i].split('=',2); pdfInfo[z[0]] = unescape(z[1]); }
+	  function getPdfInfo() {
+	    var page = pdfInfo.page || 1;
+	    var pageCount = pdfInfo.topage || 1;
+	    if ( page == 1 ) {
+		
+		  document.getElementById('master-div').style.display = 'none';
+		
+		}
+		
+	  }
+	</script>
+	
+
+</head>
+
+<body onload="getPdfInfo()">
+  <div id="master-div">
+    <span style="float:left;">Bachelorthesis FHNW<br>Hochschule für Technik</span>
+	<!--<img src="images/fhnw-logo.png" alt="Logo" style="width:60px;float:right;position:relative;top:7mm;">-->
+	<span style="float:right;">Raspberry Pi Cluster <br>for Machine Learning</span>
+  </div>
+</body>  
+</html>
